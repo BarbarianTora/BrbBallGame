@@ -660,8 +660,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerController: {fileID: 407900851}
-  countText: {fileID: 290679262}
-  winText: {fileID: 2076617331}
+  _countText: {fileID: 290679262}
+  _winText: {fileID: 2076617331}
 --- !u!1001 &432784253
 Prefab:
   m_ObjectHideFlags: 0
