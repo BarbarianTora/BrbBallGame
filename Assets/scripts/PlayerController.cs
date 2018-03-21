@@ -8,32 +8,32 @@ public class PlayerController : MonoBehaviour
 
 	public float speed;
 
-	private Rigidbody rb;
+	private Rigidbody _rb;
 
-	void Start () 
+	void Start() 
 	{
-		rb = GetComponent<Rigidbody>();
+		_rb = GetComponent<Rigidbody>();
 	}
 
 
-	void FixedUpdate () 
+	void FixedUpdate() 
 	{
 		float moveHorizontal = Input.GetAxis ( "Horizontal" );
 		float moveVertical = Input.GetAxis ( "Vertical" );
 
 		Vector3 movement = new Vector3 ( moveHorizontal, 0.0f, moveVertical );
 
-		rb.AddForce ( movement * speed );
+		_rb.AddForce ( movement * speed );
 	}
 
 	void OnTriggerEnter( Collider other )
 	{
-		if (other.gameObject.CompareTag ( "PickUp" ) ) 
+		if (other.gameObject.CompareTag( "PickUp" ) ) 
 		{
-			other.gameObject.SetActive (false);
+			other.gameObject.SetActive( false );
 
-			if (OnPickUpObject != null)
-				OnPickUpObject ();
+			if ( OnPickUpObject != null ) 
+				OnPickUpObject();
 		}
 	}
 
