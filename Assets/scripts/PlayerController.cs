@@ -6,6 +6,9 @@ public class PlayerController : MonoBehaviour
 	public delegate void PickUpObjectHandler();
 	public event PickUpObjectHandler OnPickUpObject;
 
+	//public Vector3 movement { get; set; }
+	//public VirtualJoystick joystick;
+
 	public float speed;
 
 	private Rigidbody _rb;
@@ -15,15 +18,18 @@ public class PlayerController : MonoBehaviour
 		_rb = GetComponent<Rigidbody>();
 	}
 
-
 	void FixedUpdate() 
-	{
+	{   
 		float moveHorizontal = Input.GetAxis ( "Horizontal" );
 		float moveVertical = Input.GetAxis ( "Vertical" );
 
-		Vector3 movement = new Vector3 ( moveHorizontal, 0.0f, moveVertical );
+		Vector3 movement = new Vector3 ( moveHorizontal, 0.0f, moveVertical ); 
 
-		_rb.AddForce ( movement * speed );
+		/* Vector3 movement = new Vector3 ();
+		movement.x = (joystick.Horizontal( ) );
+		movement.z = (joystick.Vertical( ) );  */
+
+		_rb.AddForce ( movement * speed ); 
 	}
 
 	void OnTriggerEnter( Collider other )
