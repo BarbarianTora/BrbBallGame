@@ -5,9 +5,7 @@ public class PlayerController : MonoBehaviour
 {
 	public delegate void PickUpObjectHandler();
 	public event PickUpObjectHandler OnPickUpObject;
-
-	//public Vector3 movement { get; set; }
-	//public VirtualJoystick joystick;
+	public VirtualJoystick moveJoystick;
 
 	public float speed;
 
@@ -20,16 +18,15 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate() 
 	{   
-		float moveHorizontal = Input.GetAxis ( "Horizontal" );
-		float moveVertical = Input.GetAxis ( "Vertical" );
+		Vector3 dir = Vector3.zero;
 
-		Vector3 movement = new Vector3 ( moveHorizontal, 0.0f, moveVertical ); 
+		dir.x = Input.GetAxis ( "Horizontal" );
+		dir.y = Input.GetAxis ( "Vertical" );
 
-		/* Vector3 movement = new Vector3 ();
-		movement.x = (joystick.Horizontal( ) );
-		movement.z = (joystick.Vertical( ) );  */
+		if (moveJoystick.inputDirection != Vector3.zero)
+			dir = moveJoystick.inputDirection;
 
-		_rb.AddForce ( movement * speed ); 
+		_rb.AddForce ( dir * speed ); 
 	}
 
 	void OnTriggerEnter( Collider other )

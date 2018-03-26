@@ -12,11 +12,12 @@ public class ScoreManager : MonoBehaviour {
 	[SerializeField]
 	private Text _winText = null;
 
-	private int count = 0;
+	public int count = 0;
 
 	void Awake()
 	{
 		_winText.text = string.Empty;
+			 
 	}
 
 	void OnEnable()
@@ -39,7 +40,11 @@ public class ScoreManager : MonoBehaviour {
 	{
 		count++;
 		_countText.text = "Count: " + count.ToString ();
-		if (count >= 12)
+		if (count >= 12) 
+		{
 			_winText.text = "Winner!";
-	}
+		}
+
+
+}
 }
