@@ -12,13 +12,42 @@ public class ScoreManager : MonoBehaviour {
 	[SerializeField]
 	private Text _winText = null;
 
-	public int count = 0;
+	[SerializeField]
+	private Text _exitText = null;
+
+	[SerializeField]
+	private Image _winImg = null;
+
+	[SerializeField]
+	private Button _exitButton = null;
+
+
+
+
+
+	public static int count = 0;
+	//public Button _exitButton;
 
 	void Awake()
 	{
 		_winText.text = string.Empty;
-			 
+
+		//Button exitButton = gameObject.GetComponentInChildren<Button>(true) as Button;
+		_exitButton.interactable = false;
+		_winImg.enabled = false;
+				 
 	}
+
+	void Update ()
+	{
+		if (count >= 12) 
+		{
+			Button exitButton = gameObject.GetComponentInChildren<Button> (true) as Button;
+			_exitButton.interactable = true;
+			_exitText.text = "click here to exit";
+		}
+	}
+
 
 	void OnEnable()
 	{
@@ -42,9 +71,11 @@ public class ScoreManager : MonoBehaviour {
 		_countText.text = "Count: " + count.ToString ();
 		if (count >= 12) 
 		{
-			_winText.text = "Winner!";
+			_winText.text = "You won!";
+			_winImg.enabled = true;
 		}
 
+	}
 
-}
+
 }

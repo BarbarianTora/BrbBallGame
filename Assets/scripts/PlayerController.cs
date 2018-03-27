@@ -21,8 +21,8 @@ public class PlayerController : MonoBehaviour
 		Vector3 dir = Vector3.zero;
 
 		dir.x = Input.GetAxis ( "Horizontal" );
-		dir.y = Input.GetAxis ( "Vertical" );
-
+		dir.z = Input.GetAxis ( "Vertical" );
+	
 		if (moveJoystick.inputDirection != Vector3.zero)
 			dir = moveJoystick.inputDirection;
 
